@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { requestFetchAllProducts } from '../redux/actions';
+import ProductTable from './ProductTable/ProductTable';
 
 class App extends Component {
 
@@ -16,10 +17,9 @@ class App extends Component {
     return (
 
       <CssBaseline>
-        <div className="App">
-
-          hello world
-        </div>
+        <section className="App">
+          <ProductTable />
+        </section>
       </CssBaseline>
     );
   }

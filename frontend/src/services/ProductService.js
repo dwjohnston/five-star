@@ -6,3 +6,18 @@ export async function fetchAllProducts() {
         { id: "2", name: "Sample2", priceUsd: 2000 }
     ]
 }
+
+export async function postProduct(product) {
+    return {
+        ...product,
+        id: Math.floor(Math.random() * 10000)
+    }
+}
+
+export async function patchProduct(product) {
+    return product;
+}
+
+export async function deleteProduct(product) {
+    return product;
+}

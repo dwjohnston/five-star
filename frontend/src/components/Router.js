@@ -12,7 +12,7 @@ function Router() {
         <Switch>
             {/* nb. Order is important because switch statement */}
             <Route path={Routes.CREATE_PRODUCT} exact component={CreateProduct} />
-            <Route path={Routes.UPDATE_PRODUCT} exact component={UpdateProduct} />
+            <Route path={`${Routes.UPDATE_PRODUCT}/:id`} exact component={UpdateProduct} />
             <Route path={Routes.PRODUCT_TABLE} exact component={ProductTable} />
             <Route path={Routes.HOME} exact component={ProductTable} />
         </Switch>

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { requestFetchAllProducts } from '../redux/actions';
-import ProductTable from './ProductTable/ProductTable';
 import Router from './Router';
 import Header from "./layouts/Header";
 class App extends Component {
@@ -16,12 +15,9 @@ class App extends Component {
 
   render() {
     return (
-
       <CssBaseline>
         <Header />
-        <section className="App">
-          <Router />
-        </section>
+        <Router />
       </CssBaseline>
     );
   }

@@ -5,9 +5,12 @@ import {
     FETCH_ALL_PRODUCTS_FAILURE,
     UPDATE_PRODUCT_REQUEST,
     UPDATE_PRODUCT_SUCCESS,
-    UPDATE_PRODUCT_FAILURE
+    UPDATE_PRODUCT_FAILURE,
+    DELETE_PRODUCT_REQUEST,
+    DELETE_PRODUCT_FAILURE,
+    DELETE_PRODUCT_SUCCESS
 } from "./actions";
-import { fetchAllProducts, patchProduct, postProduct } from "../services/ProductService";
+import { fetchAllProducts, patchProduct, postProduct, deleteProduct } from "../services/ProductService";
 export function* fetchAllProductsSaga() {
     yield takeLeading(FETCH_ALL_PRODUCTS_REQUEST, function* () {
         try {
@@ -61,10 +64,34 @@ export function* updateProductSaga() {
     });
 }
 
+export function* deleteProductSaga() {
+    yield takeLeading(DELETE_PRODUCT_REQUEST, function* (action) {
+        try {
+            const { payload } = action;
+            const result = yield deleteProduct(payload);
+
+            yield put({
+                type: DELETE_PRODUCT_SUCCESS,
+                payload: result
+            })
+        }
+        catch (err) {
+
+            console.error(err);
+            yield put({
+                type: DELETE_PRODUCT_FAILURE,
+                payload: err
+            });
+        }
+    });
+}
+
+
 
 export default function* rootSaga() {
     yield all([
         fetchAllProductsSaga(),
         updateProductSaga(),
+        deleteProductSaga(),
     ])
 }

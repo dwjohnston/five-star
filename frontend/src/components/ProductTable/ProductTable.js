@@ -6,13 +6,14 @@ import ButtonGroup from '../generic/ButtonGroup';
 import { Link } from "react-router-dom";
 import * as Routes from "../../routes/routes";
 import { selectAllProducts } from '../../redux/selectors';
+import { requestDeleteProduct } from "../../redux/actions";
 const useStyles = makeStyles({
     root: {
 
     },
 });
 
-function ProductTable({ products }) {
+function ProductTable({ products, deleteProduct }) {
     const classes = useStyles();
     return <Table className={classes.root}>
         <TableHead>
@@ -37,7 +38,7 @@ function ProductTable({ products }) {
                                 component={Link}
                                 to={`${Routes.UPDATE_PRODUCT}/${product.id}`}
                             >Update</Button>
-                            <Button>Delete</Button>
+                            <Button onClick={() => deleteProduct(product)}>Delete</Button>
                         </ButtonGroup>
                     </TableCell>
                 </TableRow>)
@@ -63,7 +64,7 @@ const mapStateToProps = (
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        deleteProduct: (product) => dispatch(requestDeleteProduct(product))
     };
 };
 export default connect(

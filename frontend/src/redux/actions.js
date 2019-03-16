@@ -34,3 +34,19 @@ export function requestUpdateProduct(productData) {
     }
 }
 
+export const DELETE_PRODUCT_BASE =
+    'DELETE_PRODUCT_BASE';
+export const DELETE_PRODUCT_REQUEST =
+    'DELETE_PRODUCT_REQUEST';
+export const DELETE_PRODUCT_SUCCESS =
+    'DELETE_PRODUCT_SUCCESS';
+export const DELETE_PRODUCT_FAILURE =
+    'QUIZE_FETCH_FAILURE';
+export const DELETE_PRODUCT_CLEAR =
+    'DELETE_PRODUCT_CLEAR';
+export function requestDeleteProduct(product) {
+    return {
+        type: DELETE_PRODUCT_REQUEST,
+        payload: product,
+    }
+}

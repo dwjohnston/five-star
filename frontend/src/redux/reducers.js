@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { FETCH_ALL_PRODUCTS_SUCCESS, UPDATE_PRODUCT_REQUEST, UPDATE_PRODUCT_FAILURE, UPDATE_PRODUCT_SUCCESS } from "./actions";
+import { FETCH_ALL_PRODUCTS_SUCCESS, UPDATE_PRODUCT_REQUEST, UPDATE_PRODUCT_FAILURE, UPDATE_PRODUCT_SUCCESS, DELETE_PRODUCT_SUCCESS } from "./actions";
 
 
 const initialState = {};
@@ -17,6 +17,12 @@ export function productsReducer(state = initialState, action) {
         case UPDATE_PRODUCT_SUCCESS: {
             //Add/replace product to existing product index
             return { ...state, [payload.id]: payload }
+        }
+
+        case DELETE_PRODUCT_SUCCESS: {
+            const newState = { ...state };
+            delete newState[payload.id];
+            return newState;
         }
 
 

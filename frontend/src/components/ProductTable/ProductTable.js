@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
+import { Table, TableHead, TableBody, TableRow, TableCell, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
+import ButtonGroup from '../generic/ButtonGroup';
 
 const useStyles = makeStyles({
     root: {
@@ -26,8 +27,12 @@ function ProductTable({ products }) {
                     <TableCell>{product.id}</TableCell>
                     <TableCell>{product.name}</TableCell>
                     <TableCell>{product.priceUsd}</TableCell>
-                    <TableCell>Actions here</TableCell>
-
+                    <TableCell>
+                        <ButtonGroup>
+                            <Button>Update</Button>
+                            <Button>Delete</Button>
+                        </ButtonGroup>
+                    </TableCell>
                 </TableRow>)
             })}
         </TableBody>

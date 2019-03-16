@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { requestFetchAllProducts } from '../redux/actions';
 import ProductTable from './ProductTable/ProductTable';
-
+import Router from './Router';
+import Header from "./layouts/Header";
 class App extends Component {
 
   constructor(props) {
@@ -17,8 +18,9 @@ class App extends Component {
     return (
 
       <CssBaseline>
+        <Header />
         <section className="App">
-          <ProductTable />
+          <Router />
         </section>
       </CssBaseline>
     );

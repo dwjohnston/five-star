@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 function UpdateProduct({ productData }) {
     const classes = useStyles();
     return <ProductEditFormLayout >
-        <Typography variant="h2">Update Product </Typography>
+        <Typography variant="h2" gutterBottom>Update Product </Typography>
         {productData && <ProductEditForm productData={productData} />}
     </ProductEditFormLayout >;
 }

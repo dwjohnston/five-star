@@ -18,7 +18,7 @@ const emptyData = createEmptyProduct();
 export default function CreateProduct({ }) {
     const classes = useStyles();
     return <ProductEditFormLayout>
-        <Typography variant="h2">Create Product </Typography>
+        <Typography variant="h2" gutterBottom>Create Product </Typography>
         <ProductEditForm productData={emptyData} />
     </ProductEditFormLayout>;
 }

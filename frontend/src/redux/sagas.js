@@ -32,7 +32,7 @@ export function* fetchAllProductsSaga() {
 }
 
 export function isNewProduct(product) {
-    return product.id === undefined;
+    return product.id === undefined || product.id.length === 0
 }
 
 export function* updateProductSaga() {

@@ -10,6 +10,10 @@ const useStyles = makeStyles({
 export default function ProductEditFormLayout({ children }) {
     const classes = useStyles();
     return <header className={classes.root}>
-        <Typography variant="h1">Acme Product Mangement Tool</Typography>
+        <Typography
+            variant="h1"
+            align="center"
+            gutterBottom
+        >Acme Product Mangement Tool</Typography>
     </header>;
 }

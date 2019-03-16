@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { requestFetchAllProducts } from '../redux/actions';
 import Router from './Router';
 import Header from "./layouts/Header";
+import ErrorPanel from './ErrorPanel/ErrorPanel';
 class App extends Component {
 
   constructor(props) {
@@ -17,6 +18,7 @@ class App extends Component {
     return (
       <CssBaseline>
         <Header />
+        <ErrorPanel />
         <Router />
       </CssBaseline>
     );

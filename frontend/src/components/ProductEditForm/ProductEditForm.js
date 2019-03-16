@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { selectProductByProductId, createEmptyProduct, isUpdateLoading } from '../../redux/selectors';
 import { requestUpdateProduct } from '../../redux/actions';
-import { Input, TextField, Button } from '@material-ui/core';
+import { Input, TextField } from '@material-ui/core';
+import Button from "../generic/Button";
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import { PRODUCT_TABLE } from '../../routes/routes';
@@ -11,19 +12,15 @@ const useStyles = makeStyles({
         display: "flex",
         flexFlow: "column nowrap",
         alignItems: "stretch",
+
+        maxWidth: 600,
     },
+
+    field: {
+        //display: "block",
+        paddingBottom: "1em",
+    }
 });
-
-
-function updateProduct(oldData, field, value) {
-    return {
-        ...oldData,
-        [field]: value
-    };
-}
-
-
-
 
 /***
  * Not that happy with the way I've done this. 
@@ -54,12 +51,16 @@ function ProductEditForm({ productData, submitForm, updateLoading }) {
             <TextField
                 disabled
                 label="Product ID"
-                value={productData.id || "n/a"} />
+                value={productData.id || "n/a"}
+                className={classes.field}
+            />
             <TextField
                 value={name}
                 label="Product Name"
                 onChange={(event) => updateName(event.target.value)}
                 disabled={updateLoading}
+                className={classes.field}
+
             />
 
             <TextField
@@ -67,11 +68,16 @@ function ProductEditForm({ productData, submitForm, updateLoading }) {
                 label="Price"
                 onChange={(event) => updatePriceUsd(event.target.value)}
                 disabled={updateLoading}
+                className={classes.field}
+
             />
 
             <Button
                 type="submit"
                 disabled={updateLoading}
+                className={classes.field}
+                color="primary"
+
             >Submit</Button>
         </form >
     )

@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
     root: {
-
+        padding: "2em",
     },
 });
 

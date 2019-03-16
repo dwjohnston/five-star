@@ -5,12 +5,10 @@ import * as serviceWorker from './serviceWorker';
 import configureStore from './store/store';
 import { Provider } from 'react-redux';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
-
+import { theme } from "./theme/theme";
 const store = configureStore();
 
-const theme = createMuiTheme({  //Import from ./theme
 
-});
 
 ReactDOM.render(
     <Provider store={store}>

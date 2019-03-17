@@ -29,18 +29,31 @@ async function updateItem(item) {
         TableName: config.tableName,
         Item: item,
     };
+
+    console.log(params);
     try {
         const results = await docClient.put(params).promise();
-        console.log(results);
-        return results.Items;
+        return item;
     }
     catch (err) {
         throw formatError(err);
     }
 }
 
-async function deleteItem(item) {
-
+async function deleteItem(id) {
+    const params = {
+        TableName: config.tableName,
+        Key: {
+            "id": id
+        }
+    };
+    try {
+        const results = await docClient.delete(params).promise();
+        return { id: id };
+    }
+    catch (err) {
+        throw formatError(err);
+    }
 }
 
 

@@ -1,8 +1,10 @@
 const express = require('express');
 const AWS = require("aws-sdk");
 const uuid = require('uuid/v1');
+var bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json());
 const port = 3001 || process.env.port;
 
 const config = require("./dynamodb/config");
@@ -26,20 +28,35 @@ app.get('/products', async (req, res) => {
     }
 });
 
-app.post('/products', (req, res) => {
+app.post('/products', async (req, res) => {
     try {
-        console.log(req);
-        console.log(uuid());
-        const result = dbApi.getAllItems();
+        const result = await dbApi.updateItem({
+            ...req.body,
+            id: uuid()
+        });
         res.send(result);
     } catch (err) {
         res.status(500).send(err);
     }
 });
 
-app.patch('/products/:id', (req, res) => {
+app.patch('/products/:id', async (req, res) => {
     try {
-        const result = dbApi.getAllItems();
+        const id = req.params.id;
+        const result = await dbApi.updateItem({
+            ...req.body,
+            id: uuid()
+        });
+        res.send(result);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+app.delete('/products/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const result = await dbApi.deleteItem(id);
         res.send(result);
     } catch (err) {
         res.status(500).send(err);

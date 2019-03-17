@@ -1,5 +1,5 @@
 var AWS = require("aws-sdk");
-const config = require("./dev.config");
+const config = require("./config");
 
 AWS.config.update(config.dynamoOptions);
 

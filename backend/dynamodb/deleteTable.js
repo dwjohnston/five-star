@@ -1,5 +1,5 @@
 var AWS = require("aws-sdk");
-const options = require("./dev.config").dynamoOptions;
+const options = require("./config").dynamoOptions;
 AWS.config.update(options);
 
 var dynamodb = new AWS.DynamoDB();

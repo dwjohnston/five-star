@@ -31,16 +31,17 @@ export async function fetchAllProducts() {
 }
 
 export async function postProduct(product) {
-    return {
-        ...product,
-        id: Math.floor(Math.random() * 10000)
-    }
+    return makeApiCall(URI_PRODUCTS, "POST", {
+        data: product
+    });
 }
 
 export async function patchProduct(product) {
-    return product;
+    return makeApiCall(`${URI_PRODUCTS}/${product.id}`, "PATCH", {
+        data: product
+    });
 }
 
 export async function deleteProduct(product) {
-    return product;
+    return makeApiCall(`${URI_PRODUCTS}/${product.id}`, "DELETE");
 }

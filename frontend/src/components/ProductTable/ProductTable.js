@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     },
 
     currencyColumn: {
-        textAlign: "right", 
+        textAlign: "right",
     }
 });
 
@@ -37,7 +37,9 @@ function ProductTable({ products, deleteProduct, currencyRate }) {
                     <TableRow>
                         <TableCell>Product ID</TableCell>
                         <TableCell>Product Name</TableCell>
-                        <TableCell>{useAud ? `Value (AUD)` : `Value (USD)`}</TableCell>
+                        <TableCell className={classes.currencyColumn}>
+                            {useAud ? `Value (AUD)` : `Value (USD)`}
+                        </TableCell>
                         <TableCell>Action</TableCell>
                     </TableRow>
                 </TableHead>

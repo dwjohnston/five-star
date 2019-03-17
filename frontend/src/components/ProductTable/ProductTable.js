@@ -1,31 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 import { connect } from 'react-redux';
 import ButtonGroup from '../generic/ButtonGroup';
 import { Link } from "react-router-dom";
 import * as Routes from "../../routes/routes";
-import { selectAllProducts } from '../../redux/selectors';
+import { selectAllProducts, selectCurrencyRate } from '../../redux/selectors';
 import { requestDeleteProduct } from "../../redux/actions";
 import Button from "../generic/Button";
 import ControlPanel from './ControlPanel';
+import { convertCurrency, formatCurrency } from '../../util/convertCurrency';
 const useStyles = makeStyles({
     root: {
 
     },
+
+    currencyColumn: {
+        textAlign: "right", 
+    }
 });
 
-function ProductTable({ products, deleteProduct }) {
+function ProductTable({ products, deleteProduct, currencyRate }) {
     const classes = useStyles();
+
+    const [useAud, updateUseAud] = useState(false);
+
     return (
         <section>
-            <ControlPanel />
+            <ControlPanel
+                useAud={useAud}
+                updateUseAud={updateUseAud}
+                disabled={!currencyRate}
+            />
             <Table className={classes.root}>
                 <TableHead>
                     <TableRow>
                         <TableCell>Product ID</TableCell>
                         <TableCell>Product Name</TableCell>
-                        <TableCell>Value (USD)</TableCell>
+                        <TableCell>{useAud ? `Value (AUD)` : `Value (USD)`}</TableCell>
                         <TableCell>Action</TableCell>
                     </TableRow>
                 </TableHead>
@@ -36,7 +48,10 @@ function ProductTable({ products, deleteProduct }) {
                         >
                             <TableCell>{product.id}</TableCell>
                             <TableCell>{product.name}</TableCell>
-                            <TableCell>{product.priceUsd}</TableCell>
+                            <TableCell className={classes.currencyColumn}>{formatCurrency(
+                                useAud ? convertCurrency(product.priceUsd, currencyRate)
+                                    : product.priceUsd
+                            )}</TableCell>
                             <TableCell>
                                 <ButtonGroup>
                                     <Button
@@ -68,7 +83,8 @@ const mapStateToProps = (
     ownProps
 ) => {
     return {
-        products: selectAllProducts(state)
+        products: selectAllProducts(state),
+        currencyRate: selectCurrencyRate(state),
     };
 };
 

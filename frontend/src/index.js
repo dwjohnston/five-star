@@ -4,7 +4,7 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './store/store';
 import { Provider } from 'react-redux';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import { makeStyles, ThemeProvider } from "@material-ui/styles";
 import { theme } from "./theme/theme";
 const store = configureStore();
 
@@ -12,9 +12,9 @@ const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
             <App />
-        </MuiThemeProvider>
+        </ThemeProvider>
     </Provider>,
     document.getElementById('root')
 );

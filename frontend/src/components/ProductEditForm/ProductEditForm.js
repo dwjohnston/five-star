@@ -65,9 +65,10 @@ function ProductEditForm({ productData, submitForm, updateLoading }) {
 
             <TextField
                 value={priceUsd}
-                label="Price"
+                label="Price (USD)"
                 onChange={(event) => updatePriceUsd(event.target.value)}
                 disabled={updateLoading}
+                type="number"
                 className={classes.field}
 
             />

@@ -50,3 +50,39 @@ export function requestDeleteProduct(product) {
         payload: product,
     }
 }
+
+export const CLEAR_ERRORS_BASE =
+    'CLEAR_ERRORS_BASE';
+export const CLEAR_ERRORS_REQUEST =
+    'CLEAR_ERRORS_REQUEST';
+export const CLEAR_ERRORS_SUCCESS =
+    'CLEAR_ERRORS_SUCCESS';
+export const CLEAR_ERRORS_FAILURE =
+    'CLEAR_ERRORS_FAILURE';
+export const CLEAR_ERRORS_CLEAR =
+    'CLEAR_ERRORS_CLEAR';
+
+export function requestClearErrors() {
+    return {
+        type: CLEAR_ERRORS_REQUEST,
+        payload: null
+    }
+}
+
+
+export const FETCH_CURRENCY_RATE_BASE =
+    'FETCH_CURRENCY_RATE_BASE';
+export const FETCH_CURRENCY_RATE_REQUEST =
+    'FETCH_CURRENCY_RATE_REQUEST';
+export const FETCH_CURRENCY_RATE_SUCCESS =
+    'FETCH_CURRENCY_RATE_SUCCESS';
+export const FETCH_CURRENCY_RATE_FAILURE =
+    'FETCH_CURRENCY_RATE_FAILURE';
+export const FETCH_CURRENCY_RATE_CLEAR =
+    'FETCH_CURRENCY_RATE_CLEAR';
+
+export function requestFetchCurrencyRate() {
+    return {
+        type: FETCH_CURRENCY_RATE_REQUEST
+    }
+}

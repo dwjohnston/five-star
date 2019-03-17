@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "create-db": "cd dynamodb && node createTable.js && cd ..",
+    "delete-db": "cd dynamodb && node deleteTable.js && cd ..",
+    "load-data": "cd dynamodb && node populateTable.js && cd ..",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.422.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "uuid": "^3.3.2"
+  }
+}

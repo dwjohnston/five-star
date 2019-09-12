@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 export interface RatingDisplayProps {
-    value: 1 | 2 | 3 | 4 | 5;
+    value: number;
 }
 
 
@@ -22,11 +22,11 @@ export const RatingDisplay: React.FunctionComponent<RatingDisplayProps> = (props
         value
     } = props;
     const classes = useStyles(props);
-
+    const floorValue = Math.floor(value); 
     //Todo - Aria tag? 
     return <section className={classes.root} >
         {new Array(5).fill(true).map((v, i) => {
-            return <RatingStar isSolid={i < value}
+            return <RatingStar isSolid={i < floorValue}
             />
         })}
     </section>;

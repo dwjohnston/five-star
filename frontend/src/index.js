@@ -1,21 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './components/App';
+import { App } from './components/App';
 import * as serviceWorker from './serviceWorker';
-import configureStore from './store/store';
-import { Provider } from 'react-redux';
 import { makeStyles, ThemeProvider } from "@material-ui/styles";
 import { theme } from "./theme/theme";
-const store = configureStore();
+import { LoadsContext } from 'react-loads';
+import { CssBaseline } from '@material-ui/core';
 
 
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ThemeProvider theme={theme}>
-            <App />
-        </ThemeProvider>
-    </Provider>,
+    <>
+        <CssBaseline />
+        <LoadsContext.Provider>
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
+        </LoadsContext.Provider>
+    </>,
     document.getElementById('root')
 );
 

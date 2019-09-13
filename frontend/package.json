@@ -6,19 +6,14 @@
     "@material-ui/core": "^4.4.2",
     "@material-ui/icons": "^4.4.1",
     "@material-ui/styles": "^4.4.1",
-    "@types/lodash": "^4.14.138",
-    "axios": "^0.18.0",
     "common": "file:../common",
     "http-proxy-middleware": "^0.19.1",
     "lodash": "^4.17.15",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-loads": "^8.3.8",
-    "react-redux": "^6.0.1",
-    "react-scripts": "2.1.8",
-    "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-saga": "^1.0.2"
+    "react-scripts": "2.1.8"
+
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,6 +34,7 @@
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.2",
+    "@types/lodash": "^4.14.138",
     "typescript": "^3.6.3"
   }
 }

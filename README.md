@@ -129,6 +129,8 @@ My general approach for writing code, and tests, especially for writing new code
 2. Start writing tests. Find that writing the tests are hard. 
 3. Refactor the code to make writing the tests easy. 
 
+
+
 ### Error Handling 
 
 #### TypeScript interfaces
@@ -158,5 +160,39 @@ The solution I'm demonstrating, is to write functions that will take data that i
 
 #### Backend 
 
-Using Express 
+Using Express error handlers. 
+
+https://expressjs.com/en/guide/error-handling.html
+
+### Frontend 
+
+#### State-Management, Loading Flags
+
+My goto state management is usually redux and redux-saga, and I use [this approach](https://medium.com/stashaway-engineering/react-redux-tips-better-way-to-handle-loading-flags-in-your-reducers-afda42a804c6) for doing loading flags. 
+
+But that can be a lot of boilerplate, and so for this I've played around with using [react-loads](https://www.npmjs.com/package/react-loads) instead. 
+
+#### Separation of State and Display
+
+A design philsophy I've been playing around with, is how you should be able to change your state management framework of choice easily (ie. from redux to mobx to graphql), without having to rewrite all of your react components. 
+
+To achieve this, you would write your main display components accepting props like: 
+
+- data
+- isLoading
+- error
+- onClick/onSubmit
+
+and then it's a matter of passing those values in from whatever state management library you are using. 
+
+
+
+#### Function currying to making the Rating Component reusable 
+
+For the rating component, in this case, when we submit a rating, there are three pieces of data we need: `contentId`, `userId` and `ratingValue`. 
+
+However, the `contentId` and `userId` values are arbitrary to this use case only, it's conceivable that you might be reusing the rating component else where, where there is a different set of values that need to be submitted. 
+
+To achieve this, I've taken an approach of passing a [curried function](https://stackoverflow.com/questions/36314/what-is-currying) to the Rating Component. That is - the function that is passed to the Rating Component already has the data about the `userId` and `contentId` included by the functions closure, it just needs the `ratingValue` to be given to it by the Rating Component. 
+
 

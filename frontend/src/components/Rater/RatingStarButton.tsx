@@ -9,10 +9,6 @@ import { User, RatingValues, Rating } from 'common';
 const useStyles = makeStyles((theme: Theme) => {
     return ({
         root: ({
-
-            display: "flex",
-            flexFlow: "column nowrap",
-            alignItems: "center",
         }),
 
         radioButton: {
@@ -42,7 +38,9 @@ export const RatingStarButton: React.FunctionComponent<RatingStarButtonProps> = 
     const handleMouseOver = useCallback(() => updateTempValue(value), []);
     const handleMouseOut = clearTempValue;
     const handleClick = useCallback(() => submitRatingFn(value), [submitRatingFn]); 
-
+    //@DesignNote I went for a hidden radio button for accessability
+    //But it might be better to just use aria tag. 
+    
     return <label>
         <input
             className={classes.radioButton}

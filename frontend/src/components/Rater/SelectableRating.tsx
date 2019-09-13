@@ -1,11 +1,10 @@
 
 import React, { useState, useCallback, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Theme, IconButton, Typography } from '@material-ui/core';
-import { RatingStar } from './RatingStar';
+import { Theme,  Typography } from '@material-ui/core';
 import { debounce } from "lodash";
-import { useLoadsCache, useLoads } from 'react-loads';
-import { User, RatingValues, Rating } from 'common';
+import {  useLoads } from 'react-loads';
+import {  RatingValues, Rating } from 'common';
 import { RatingStarButton } from './RatingStarButton';
 const useStyles = makeStyles((theme: Theme) => {
     return ({
@@ -15,10 +14,6 @@ const useStyles = makeStyles((theme: Theme) => {
             flexFlow: "column nowrap",
             alignItems: "center",
         }),
-
-        radioButton: {
-            display: "none",
-        }
     })
 });
 
@@ -43,6 +38,7 @@ export const SelectableRating: React.FunctionComponent<SelectableRatingProps> = 
     const [selectedValue, setSelectedValue] = useState<RatingValues | null>(null);
     const [tempValue, setTempValue] = useState<RatingValues | null>(null);
 
+    //@DesignNote - This debounce is to prevent a flickering has the mouse moves from star to star
     const debouncedSetTempValue = debounce(setTempValue, 200);
     const updateTempValue = useCallback((i: RatingValues) => {
         debouncedSetTempValue.cancel();

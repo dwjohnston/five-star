@@ -10,7 +10,12 @@ const port = process.env.PORT || 3001; // default port to listen
 class BadRequestError extends Error {
 }
 
-function errorHandler(err, req, res, next) {
+
+//@DesignNote - We can test this function fairly easily by 
+// Mocking the objects/functions that go into it and testing assertions against. 
+// The router methods can be similarly tested by pulling them out 
+// Into exported functions like this. 
+export function errorHandler(err, req, res, next) {
     if (err instanceof BadRequestError) {
         res.status(400).end();
     }        

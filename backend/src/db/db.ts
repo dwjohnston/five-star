@@ -25,6 +25,9 @@ export async function getAllContent(db: Db): Promise<Content[]> {
     }
 }
 
+//@DesignNote - Testing - 
+// The way I'd be testing this, is looking for mock mongoDB, 
+// That you can set up with whatever data, and test the queres against. 
 export async function postRating(db: Db, contentId: number, rating: Rating) : Promise<Rating> {
     //Todo: update this query so that it replaces the rating where the userId is the same. 
     try {

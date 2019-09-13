@@ -16,9 +16,12 @@ class BadRequestError extends Error {
 // The router methods can be similarly tested by pulling them out 
 // Into exported functions like this. 
 export function errorHandler(err, req, res, next) {
+    console.error(err); 
+    
     if (err instanceof BadRequestError) {
         res.status(400).end();
     }        
+
     res.status(500).end(); 
 }
 

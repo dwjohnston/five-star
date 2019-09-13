@@ -63,7 +63,7 @@ Throughout the code the following documentation conventions are used:
 
   //TODO - Highlights where some additional functionality needs to be added. 
 
-  //@DesignNote 
+  //@DesignNote - See these notes in conjunction with the Design Philosophy notes below. 
 
 ```
 
@@ -123,7 +123,7 @@ Post a rating of the format:
 
 ### Testing 
 
-My general approach for writing code, and tests, especially for writing new code is: 
+My general approach for writing code, and tests, especially for writing new code (where there aren't patterns established) is: 
 
 1. Write the code and get the thing working. Work out the things that need to be done. 
 2. Start writing tests. Find that writing the tests are hard. 
@@ -157,4 +157,6 @@ The solution I'm demonstrating, is to write functions that will take data that i
 
 
 #### Backend 
+
+Using Express 
 

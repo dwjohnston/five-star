@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme: Theme) => {
 const allStarValues: RatingValues[] = [1, 2, 3, 4, 5];
 
 export interface SelectableRatingProps {
-    selectedValue?: RatingValues;
     disabled?: boolean; 
     submitRatingFn: (value: RatingValues) => Promise<Rating>; 
 }
@@ -35,10 +34,12 @@ export const SelectableRating: React.FunctionComponent<SelectableRatingProps> = 
     const classes = useStyles(props);
 
 
+    //The actual selected value
     const [selectedValue, setSelectedValue] = useState<RatingValues | null>(null);
+    //The current mouse over value
     const [tempValue, setTempValue] = useState<RatingValues | null>(null);
 
-    //@DesignNote - This debounce is to prevent a flickering has the mouse moves from star to star
+    //@DesignNote - This debounce is to prevent a flickering as the mouse moves from star to star
     const debouncedSetTempValue = debounce(setTempValue, 200);
     const updateTempValue = useCallback((i: RatingValues) => {
         debouncedSetTempValue.cancel();
@@ -72,9 +73,9 @@ export const SelectableRating: React.FunctionComponent<SelectableRatingProps> = 
                 return <RatingStarButton
                     value={v}
                     key={v}
-                    updateTempValue={updateTempValue}
-                    clearTempValue={clearTempValue}
-                    submitRatingFn = {load}
+                    onHover={updateTempValue}
+                    onMouseOut={clearTempValue}
+                    onClick = {load}
                     disabled = {disabled}
                     isSolid={v <= displayValue} />
 

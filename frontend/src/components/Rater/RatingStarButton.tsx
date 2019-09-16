@@ -18,26 +18,26 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 export interface RatingStarButtonProps {
     value: RatingValues;
-    updateTempValue: (i: RatingValues) => void;
-    clearTempValue: () => void;
+    onHover: (i: RatingValues) => void;
+    onMouseOut: () => void;
     isSolid: boolean;
     disabled: boolean; 
-    submitRatingFn: (value: RatingValues) => any; 
+    onClick: (value: RatingValues) => any; 
 }
 
 export const RatingStarButton: React.FunctionComponent<RatingStarButtonProps> = (props) => {
     const {
         value,
-        updateTempValue,
-        clearTempValue,
-        submitRatingFn,
+        onHover,
+        onMouseOut,
+        onClick,
         isSolid, 
         disabled = false
     } = props;
     const classes = useStyles(props);
-    const handleMouseOver = useCallback(() => updateTempValue(value), []);
-    const handleMouseOut = clearTempValue;
-    const handleClick = useCallback(() => submitRatingFn(value), [submitRatingFn]); 
+    const handleMouseOver = useCallback(() => onHover(value), []);
+    const handleMouseOut = onMouseOut;
+    const handleClick = useCallback(() => onClick(value), [onClick]); 
     //@DesignNote I went for a hidden radio button for accessability
     //But it might be better to just use aria tag. 
     

@@ -119,6 +119,13 @@ Post a rating of the format:
 
 4. There is a dummy user object on the frontend, which appears after 4000ms, which is for the purpose of demonstrating the attachment of the user ID to submit rating request. 
 
+## Other things needing tidy up
+
+- Pull hard coded variables/magic numbers out into constant variables
+- Delete unused dependencies, unused CSS. 
+- Possibly want some improved CSS on the star selector - ie. to differentiate between hover and selected stars. 
+
+
 ## Design Philosophy 
 
 ### Testing 
